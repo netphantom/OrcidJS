@@ -79,7 +79,12 @@ function createPubObj(details) {
 
 function printElement(e, idelement) {
     let output = "";
-    output += '<div>' + e.getAuthors() + '</div>';
+    output += '<div>' + e.getAuthors() + '</div><br>';
     output += '<div>' + e.getArticleTitle()+ '</div><br>';
+    output += '<div>' + e.getArticleType()+ '</div><br>';
+    output += '<div>' + e.getVolume()+ '</div><br>';
+    output += '<div>' + e.getPages()+ '</div><br>';
+    output += '<div>' + e.getArticleYear()+ '</div><br>';
+    output += '<div>' + e.getArticleOrg()+ '</div><br><hr>';
     document.getElementById(idelement).innerHTML += output;
 }
