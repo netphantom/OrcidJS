@@ -1,5 +1,5 @@
 # OrcidJS
-This is a small script that allows you to get the information of all the publication information of a given Orcid.
+This is a small library that allows you to get the information of all the publication information of a given Orcid.
 You have to configure the script (in the HTML file) with your orcid and set where to print it. 
 
 # Basic Usage
