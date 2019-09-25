@@ -74,17 +74,10 @@ function createPubObj(details) {
         s = details.match(reg);
     }
     let organization = s[1];
-    return new Publication(author, title, confjournal, volume, pages, year, organization);
+    return new Article(author, title, confjournal, volume, pages, year, organization);
 }
 
 function printElement(e, idelement) {
-    let output = "";
-    output += '<div>' + e.getAuthors() + '</div><br>';
-    output += '<div>' + e.getArticleTitle()+ '</div><br>';
-    output += '<div>' + e.getArticleType()+ '</div><br>';
-    output += '<div>' + e.getVolume()+ '</div><br>';
-    output += '<div>' + e.getPages()+ '</div><br>';
-    output += '<div>' + e.getArticleYear()+ '</div><br>';
-    output += '<div>' + e.getArticleOrg()+ '</div><br><hr>';
+    let output = e.printDetails();
     document.getElementById(idelement).innerHTML += output;
 }
