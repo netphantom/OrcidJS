@@ -1,4 +1,4 @@
-class BibtexParser {
+class ParseBibtex {
     constructor(element) {
         this._source = element;
         return this.elaborate();

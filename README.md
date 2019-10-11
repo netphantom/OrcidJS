@@ -14,7 +14,7 @@ In this version, just create an element somewhere in your home page, for example
     <h1>Publications</h1>
     <div id="myPublications"></div>
 ````
-Then setup the script with your Orcid. that's it.  
+Then setup the script with your Orcid. That's it.  
 ```
     <script>
         printPubList("0000-0001-8041-4403", "myPublications");

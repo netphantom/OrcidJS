@@ -1,13 +1,13 @@
 function printPubList(orcid, idelement) {
     let list = [];
     let link = "https://pub.orcid.org/v2.0/" + orcid + "/works";
-    httpGet(link).then(function (data) {
+    httpOrcidGet(link).then(function (data) {
         data = JSON.parse(data);
         for (let i in data.group) {
             let linkpub = "https://pub.orcid.org/v2.0/" + orcid + "/work/" + data.group[i]["work-summary"][0]["put-code"];
-            httpGet(linkpub).then(function (pubdetails) {
+            httpOrcidGet(linkpub).then(function (pubdetails) {
                 pubdetails = JSON.parse(pubdetails);
-                let pub = new BibtexParser(pubdetails["citation"]["citation-value"]);
+                let pub = new ParseBibtex(pubdetails["citation"]["citation-value"]);
                 printElement(pub, idelement);
                 list.push(pub);
             });
@@ -16,7 +16,7 @@ function printPubList(orcid, idelement) {
     return list;
 }
 
-function httpGet(url) {
+function httpOrcidGet(url) {
     var request = new XMLHttpRequest();
     return new Promise(function(resolve, reject) {
         request.onreadystatechange = function() {
