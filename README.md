@@ -3,6 +3,7 @@ This is a small script that allows you to get the information of all the publica
 OrcidJs is totally written in JS, so it does not need a server (such as APACHE or NGINX) to elaborate the information from the Orcid website.
 You have to configure the script (in the HTML file) with a valid orcid and set where to print the list of the results. 
 
+
 # Basic Usage
 Look at the ```index.html``` file attached to this repository to see how the script works. 
 To let it work on your website follow those steps.
