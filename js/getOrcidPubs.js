@@ -1,5 +1,13 @@
+function includeJS(incFile)
+{
+    document.write('<script type="text/javascript" src="'+ incFile+ '"></script>');
+}
+
+
 function printPubList(orcid, idelement) {
-    let list = [];
+    includeJS("js/Publication.js");
+    includeJS("js/ParseBibtex.js");
+    //let list = [];
     let link = "https://pub.orcid.org/v2.0/" + orcid + "/works";
     httpOrcidGet(link).then(function (data) {
         data = JSON.parse(data);
@@ -9,11 +17,11 @@ function printPubList(orcid, idelement) {
                 pubdetails = JSON.parse(pubdetails);
                 let pub = new ParseBibtex(pubdetails["citation"]["citation-value"]);
                 printElement(pub, idelement);
-                list.push(pub);
+                //list.push(pub);
             });
         }
     });
-    return list;
+    //return list;
 }
 
 function httpOrcidGet(url) {

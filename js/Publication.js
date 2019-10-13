@@ -18,7 +18,6 @@ class Publication{
     }
 
     printDetails(){
-
     }
 }
 
@@ -66,16 +65,31 @@ class Article extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.journal + '<br>';
-        output += this.volume + '<br>';
-        output += this.number + '<br>';
-        output += this.pages + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year + ', ';
+
+        output += this.journal;
+        if (this.volume != null) {
+            output += ', Vol. ' + this.volume;
+        }
+        if (this.number != null) {
+            output += ', N. ' + this.number;
+        }
+        if (this.pages != null) {
+            output += ', pp. ' + this.pages;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi + '<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -97,7 +111,6 @@ class Book extends Publication {
     get authorOrEditor() {
         return this._authorOrEditor;
     }
-
 
     get publisher() {
         return this._publisher;
@@ -129,17 +142,34 @@ class Book extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.authorOrEditor + '<br>';
+        let output = '<div>'+ this.authorOrEditor + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.publisher + '<br>';
-        output += this.volumeOrNumber + '<br>';
-        output += this.series + '<br>';
-        output += this.address + '<br>';
-        output += this.edition + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year + ', ';
+
+        output += this.publisher;
+        if (this.series != null) {
+            output += ', ' + this.series;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.edition != null) {
+            output += ', ' + this.edition;
+        }
+        if (this.volumeOrNumber != null) {
+            output += ', Vol. ' + this.volumeOrNumber;
+        }
+
+        if (this.month!= null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -177,14 +207,27 @@ class Booklet extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.howpublished + '<br>';
-        output += this.address + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.howpublished != null) {
+            output += ', ' + this.howpublished;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+
+        if (this.month != null) {
+            output += this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -244,21 +287,45 @@ class Inbook extends Publication {
     get note() {
         return this._note;
     }
+
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.authorOrEditor + '<br>';
+        let output = '<div>'+ this.authorOrEditor + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.chapterAndOrPages + '<br>';
-        output += this.publisher + '<br>';
-        output += this.volumeOrNumber + '<br>';
-        output += this.series + '<br>';
-        output += this.type + '<br>';
-        output += this.address + '<br>';
-        output += this.edition + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.publisher != null) {
+            output += ', ' + this.publisher;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.edition != null) {
+            output += ', ' + this.edition;
+        }
+        if (this.volumeOrNumber != null) {
+            output += ', ' + this.volumeOrNumber;
+        }
+        if (this.series != null) {
+            output += ', ' + this.series;
+        }
+        if (this.type != null) {
+            output += ', ' + this.type;
+        }
+        if (this.chapterAndOrPages != null) {
+            output += ', ' + this.chapterAndOrPages;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -333,24 +400,57 @@ class Incollection extends Publication {
     get note() {
         return this._note;
     }
+
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.bookTitle + '<br>';
-        output += this.publisher + '<br>';
-        output += this.editor + '<br>';
-        output += this.volumeOrNumber + '<br>';
-        output += this.chapter + '<br>';
-        output += this.pages + '<br>';
-        output += this.series + '<br>';
-        output += this.type + '<br>';
-        output += this.address + '<br>';
-        output += this.edition + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.bookTitle!= null) {
+            output += ', ' + this.bookTitle;
+        }
+        if (this.chapter!= null) {
+            output += ', ch. ' + this.chapter;
+        }
+        if (this.pages!= null) {
+            output += ', pp. ' + this.pages;
+        }
+        if (this.publisher != null) {
+            output += ', ' + this.publisher;
+        }
+        if (this.editor != null) {
+            output += ', ' + this.editor;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.edition != null) {
+            output += ', ' + this.edition;
+        }
+        if (this.volumeOrNumber != null) {
+            output += ', ' + this.volumeOrNumber;
+        }
+        if (this.series != null) {
+            output += ', ' + this.series;
+        }
+        if (this.type != null) {
+            output += ', ' + this.type;
+        }
+        if (this.chapterAndOrPages != null) {
+            output += ', ' + this.chapterAndOrPages;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -418,20 +518,45 @@ class Inproceedings extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.bookTitle + '<br>';
-        output += this.publisher + '<br>';
-        output += this.editor + '<br>';
-        output += this.volumeOrNumber + '<br>';
-        output += this.organization + '<br>';
-        output += this.pages + '<br>';
-        output += this.series + '<br>';
-        output += this.address + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.bookTitle!= null) {
+            output += ', ' + this.bookTitle;
+        }
+        if (this.pages!= null) {
+            output += ', pp. ' + this.pages;
+        }
+        if (this.publisher != null) {
+            output += ', ' + this.publisher;
+        }
+        if (this.editor != null) {
+            output += ', ' + this.editor;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.volumeOrNumber != null) {
+            output += ', Vol. ' + this.volumeOrNumber;
+        }
+        if (this.series != null) {
+            output += ', ' + this.series;
+        }
+        if (this.organization != null) {
+            output += ', ' + this.organization;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -440,7 +565,6 @@ class Inproceedings extends Publication {
 class Manual extends Publication {
     constructor(title, author, doi, organization, address, edition, month, year, note) {
         super(title, year, doi);
-        this._title = title;
         this._author = author;
         this._organization = organization;
         this._address = address;
@@ -449,9 +573,6 @@ class Manual extends Publication {
         this._note = note;
     }
 
-    get title() {
-        return this._title;
-    }
     get author() {
         return this._author;
     }
@@ -478,15 +599,30 @@ class Manual extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.organization + '<br>';
-        output += this.address + '<br>';
-        output += this.edition + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year ;
+
+        if (this.organization!= null) {
+            output += ', ' + this.organization;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.edition != null) {
+            output += ', ' + this.edition;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -529,15 +665,30 @@ class Thesis extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.type + '<br>';
-        output += this.address + '<br>';
-        output += this.school + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.school != null) {
+            output += ', ' + this.school;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.type != null) {
+            output += ', ' + this.type;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -590,17 +741,36 @@ class Proceedings extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.editor + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.publisher + '<br>';
-        output += this.editor + '<br>';
-        output += this.volumeOrNumber + '<br>';
-        output += this.series + '<br>';
-        output += this.address + '<br>';
-        output += this.month + '<br>';
-        output += this.organization + '<br><hr>';
+        output += this.year;
+
+        if (this.volumeOrNumber != null) {
+            output += ', ' + this.volumeOrNumber;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.series != null) {
+            output += ', ' + this.series;
+        }
+        if (this.publisher != null) {
+            output += ', ' + this.publisher;
+        }
+        if (this.organization != null) {
+            output += ', ' + this.organization;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -648,16 +818,33 @@ class TechReport extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.institution + '<br>';
-        output += this.type + '<br>';
-        output += this.number + '<br>';
-        output += this.address + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.institution != null) {
+            output += ', ' + this.school;
+        }
+        if (this.address != null) {
+            output += ', ' + this.address;
+        }
+        if (this.number != null) {
+            output += ', ' + this.number;
+        }
+        if (this.type != null) {
+            output += ', ' + this.type;
+        }
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
@@ -685,12 +872,20 @@ class Unpublished extends Publication {
 
     printDetails() {
         super.printDetails();
-        let output = "";
-        output += '<div>'+ this.author + '<br>';
+        let output = '<div>'+ this.author + '<br>';
         output += '<b>' + this.title + '</b><br>';
-        output += this.year + '<br>';
-        output += this.month + '<br>';
-        output += this.note + '<br><hr>';
+        output += this.year;
+
+        if (this.month != null) {
+            output += ', ' + this.month + '<br>';
+        }
+        if (this.note != null) {
+            output += this.note + '<br>';
+        }
+        if (this.doi != null) {
+            output += this.doi +'<br>';
+        }
+        output += '<br><hr></div>';
         return output;
     }
 }
