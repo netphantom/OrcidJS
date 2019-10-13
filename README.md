@@ -20,3 +20,9 @@ Then setup the script with your Orcid. that's it.
         printPubList("0000-0001-8041-4403", "myPublications");
     </script>
 ```
+
+### NOTES
+The script only parse Bibtex records stored on the Orcid Web page. 
+For a better results, I suggest you to import them from uniform sources.
+For example, if you use Google Scholar, go on your profile, select all the files and export them as Bibtex.
+On the Orcid website, import your publication from the Bibtex file you have just saved. 
