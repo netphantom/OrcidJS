@@ -4,9 +4,6 @@
     <list default="true" id="bb445a96-e118-4f17-89f6-37731fe1ef99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Publication.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Publication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/getOrcidPubs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/getOrcidPubs.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
