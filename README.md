@@ -23,14 +23,22 @@ In this version of the script, just create an element somewhere in your HTML pag
 ````
 
 ### 3) Configure the Script
-Setup the script with your Orcid: call `````printPubList(orcid, htmlid)`````. That's it.  
+Setup the script with your Orcid: call `````printPubList(orcid, htmlid, sort)`````. Where:
+
+`orcid` is the Orcid of the author you want to list the publications.
+
+`htmlid` is the HTML element ID you created in step 2).
+
+`sort` is a boolean variable that you can use to sort by year the publications before printing.
+
+For example:
 ```
     <script>
-        printPubList("0000-0001-8041-4403", "myPublications");
+        printPubList("0000-0001-8041-4403", "myPublications", sort=true);
     </script>
 ```
 ### NOTES
 The script only parse Bibtex records stored on the Orcid Web page. 
 For a better results, I suggest you to import them from uniform sources.
 For example, if you use Google Scholar, go on your profile, select all the files and export them as Bibtex.
-On the Orcid website, import your publication from the Bibtex file you have just saved. 
+On the Orcid website, import your publications from the Bibtex file you have just saved. 

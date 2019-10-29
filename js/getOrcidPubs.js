@@ -1,27 +1,25 @@
-function includeJS(incFile)
-{
+function includeJS(incFile) {
     document.write('<script type="text/javascript" src="'+ incFile+ '"></script>');
 }
 
 
-function printPubList(orcid, idelement) {
+async function getPubList(orcid) {
     includeJS("js/Publication.js");
     includeJS("js/ParseBibtex.js");
-    //let list = [];
     let link = "https://pub.orcid.org/v2.0/" + orcid + "/works";
-    httpOrcidGet(link).then(function (data) {
+    let list = [];
+    await httpOrcidGet(link).then(async function (data) {
         data = JSON.parse(data);
         for (let i in data.group) {
-            let linkpub = "https://pub.orcid.org/v2.0/" + orcid + "/work/" + data.group[i]["work-summary"][0]["put-code"];
-            httpOrcidGet(linkpub).then(function (pubdetails) {
+            let publink = "https://pub.orcid.org/v2.0/" + orcid + "/work/" + data.group[i]["work-summary"][0]["put-code"];
+            let pub = await httpOrcidGet(publink).then(function (pubdetails) {
                 pubdetails = JSON.parse(pubdetails);
-                let pub = new ParseBibtex(pubdetails["citation"]["citation-value"]);
-                printElement(pub, idelement);
-                //list.push(pub);
+                return new ParseBibtex(pubdetails["citation"]["citation-value"]);
             });
+            list.push(pub);
         }
     });
-    //return list;
+    return list;
 }
 
 function httpOrcidGet(url) {
@@ -42,7 +40,22 @@ function httpOrcidGet(url) {
     });
 }
 
-function printElement(e, idelement) {
-    let output = e.printDetails();
-    document.getElementById(idelement).innerHTML += output;
+async function printList(orcid, idelement, sort=false) {
+    let publist = await getPubList(orcid);
+    if (sort===true) {
+        publist.sort(function (a,b) {
+            return b._year - a._year;
+        });
+    }
+    let year = publist[0]._year;
+    document.getElementById(idelement).innerHTML = "<h1>"+year+"</h1>";
+    for (let i=0; i<publist.length; i++) {
+        let head="";
+        if (publist[i]._year !== year) {
+            year =publist[i]._year;
+            head = "<h1>"+year+"</h1>";
+        }
+        let output = publist[i].printDetails();
+        document.getElementById(idelement).innerHTML += head + output;
+    }
 }
