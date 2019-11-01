@@ -40,22 +40,84 @@ function httpOrcidGet(url) {
     });
 }
 
-async function printList(orcid, idelement, sort=false) {
+async function printList(orcid, idelement, sort=false, classify=false) {
     let publist = await getPubList(orcid);
     if (sort===true) {
         publist.sort(function (a,b) {
             return b._year - a._year;
         });
     }
-    let year = publist[0]._year;
-    document.getElementById(idelement).innerHTML = "<h1>"+year+"</h1>";
-    for (let i=0; i<publist.length; i++) {
-        let head="";
-        if (publist[i]._year !== year) {
-            year =publist[i]._year;
-            head = "<h1>"+year+"</h1>";
+    if (classify===true) {
+        //If the array is not sorted, sort it
+        if (sort===false) {
+            publist.sort(function (a,b) {
+                return b._year - a._year;
+            });
         }
-        let output = publist[i].printDetails();
-        document.getElementById(idelement).innerHTML += head + output;
+        let conference = [], journal = [], other = [];
+        for (let i=0; i<publist.length; i++) {
+            switch(publist[i].constructor.name) {
+                case "Article": {
+                    journal.push(publist[i]);
+                    break;
+                }
+                case "Inproceedings": {
+                    conference.push(publist[i]);
+                    break;
+                }
+                case "Book": {
+                    journal.push(publist[i]);
+                    break;
+                }
+                case "Inbook": {
+                    journal.push(publist[i]);
+                    break;
+                }
+                case "Incollection": {
+                    journal.push(publist[i]);
+                    break;
+                }
+                case "Proceedings": {
+                    journal.push(publist[i]);
+                    break;
+                }
+                default :{
+                    other.push(publist[i]);
+                    break;
+                }
+            }
+        }
+        if (journal.length>0) {
+            document.getElementById(idelement).innerHTML = "<h1>Journal or Book</h1>";
+            for (let i = 0; i < journal.length; i++) {
+                let output = journal[i].printDetails();
+                document.getElementById(idelement).innerHTML += output;
+            }
+        }
+        if (conference.length>0) {
+            document.getElementById(idelement).innerHTML += "<h1>Conference</h1>";
+            for (let i = 0; i < conference.length; i++) {
+                let output = conference[i].printDetails();
+                document.getElementById(idelement).innerHTML += output;
+            }
+        }
+        if (other.length>0) {
+            document.getElementById(idelement).innerHTML += "<h1>Other</h1>";
+            for (let i = 0; i < other.length; i++) {
+                let output = other[i].printDetails();
+                document.getElementById(idelement).innerHTML += output;
+            }
+        }
+    } else {
+        let year = publist[0]._year;
+        document.getElementById(idelement).innerHTML = "<h1>" + year + "</h1>";
+        for (let i = 0; i < publist.length; i++) {
+            if (publist[i]._year !== year) {
+                year = publist[i]._year;
+                document.getElementById(idelement).innerHTML += "<h1>" + year + "</h1>";
+            }
+            let output = publist[i].printDetails();
+            document.getElementById(idelement).innerHTML += output;
+        }
     }
 }
