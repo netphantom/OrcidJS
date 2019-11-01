@@ -52,14 +52,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Firefox Remote.Unnamed">
     <configuration name="Test" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="63342" isV8Legacy="true">
       <option name="v8Legacy" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="FirefoxRemoteDebugType" nameIsGenerated="true" port="3000">
       <method v="2" />
     </configuration>
     <configuration default="true" type="FirefoxRemoteDebugType" port="3000">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Attach to Node.js/Chrome.Test" />
+      <item itemvalue="Firefox Remote.Unnamed" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -94,6 +101,9 @@
       <workItem from="1572118377645" duration="4382000" />
       <workItem from="1572197175117" duration="7399000" />
       <workItem from="1572379208493" duration="4961000" />
+      <workItem from="1572388477871" duration="8000" />
+      <workItem from="1572643190959" duration="20000" />
+      <workItem from="1572643242064" duration="2878000" />
     </task>
     <servers />
   </component>
