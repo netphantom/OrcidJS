@@ -1,3 +1,5 @@
+![200](logo.png)
+
 # OrcidJS
 This is a small script that allows you to get the information of all the publication details of a given Orcid.
 OrcidJs is totally written in JS, so it does not need a server (such as APACHE or NGINX) to elaborate the information from the Orcid website.
